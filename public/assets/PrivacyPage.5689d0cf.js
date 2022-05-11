@@ -1,0 +1,1 @@
+import{Q as e}from"./QPage.9cfb272b.js";import{_ as a,F as t,G as r,H as c,K as s}from"./index.f4e7a5c8.js";const o={},_=s("h1",{class:"title"},"Privacy",-1);function n(i,f){return t(),r(e,null,{default:c(()=>[_]),_:1})}var m=a(o,[["render",n]]);export{m as default};
