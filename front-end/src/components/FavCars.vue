@@ -11,7 +11,7 @@
       navigation
       padding
       arrows
-      autoplay="true"
+      autoplay
       control-type="regular"
       control-color="primary"
       class="bg-transparent text-dark"
@@ -19,12 +19,12 @@
       <q-carousel-slide
         v-for="(item,index) in localState.cars"
         :name="index" class="column no-wrap flex-center">
-        <div class="full-width">
+        <div class="full-width primary-card">
           <q-img :src="item.src" style="height: 200px"/>
           <p class="text-md text-dark">{{item?.title}}</p>
           <p class="text-caption text-dark">{{item?.description}}</p>
-          <p class="text-md text-bold text-dark">{{item?.km_rate}}</p>
-          <p class="text-md text-bold text-dark">{{item?.duty_rate}}</p>
+          <p class="text-md text-bold text-dark">Kilometer Rate : {{item?.km_rate}}</p>
+          <p class="text-md text-bold text-dark">Duty Rate : {{item?.duty_rate}}</p>
         </div>
 
       </q-carousel-slide>

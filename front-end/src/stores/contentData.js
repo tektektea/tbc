@@ -3,8 +3,8 @@ import {LocalStorage} from "quasar";
 
 export const useContentData = defineStore('contentData', {
   state: () => ({
-    header:'Test headinbg',
-    featureText:'Lorem dfas dfasdf adfadf adsf',
+    header:'TBC Car Rental',
+    featureText:'I hahdam nan leh i him zawk nan Govt Approved Car rental Service ilo pan ve thin dawn nia',
   }),
 
   getters: {

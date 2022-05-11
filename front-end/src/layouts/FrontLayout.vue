@@ -1,29 +1,41 @@
 <template>
-  <q-layout @scroll="onScroll" view="hHh lpR fFf">
+  <q-layout view="hHh lpR fff" @scroll="onScroll">
 
-    <q-header :elevated="position!==0" class="bg-white flex justify-center text-dark">
-      <q-toolbar style="height: 70px" class="container">
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+    <q-header  class="header flex justify-center text-primary">
+      <q-toolbar class="container" style="height: 70px">
+        <q-toolbar-title @click="$router.replace({name:'home'})" class="text-bold cursor-pointer">
+          <q-avatar class="q-mr-lg">
+            <img src="~assets/quasar-logo-vertical.svg">
           </q-avatar>
-          App name
+          TBC Car Rental
         </q-toolbar-title>
-        <q-btn color="primary" rounded outline label="Booking"/>
+        <q-btn :to="{name:'booking'}" color="primary" label="Booking" outline rounded/>
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
-      <router-view />
+    <q-page-container class="q-pa-sm">
+      <router-view/>
     </q-page-container>
-
+    <q-footer>
+      <Footer/>
+    </q-footer>
   </q-layout>
 </template>
-<script setup>
-import {ref} from "vue";
+<script>
+import {defineAsyncComponent, defineComponent, ref} from "vue";
 
-const position = ref(0);
-const onScroll=detail=>{
-  position.value = detail.position;
-}
+export default defineComponent({
+  components: {Footer: defineAsyncComponent(() => import('components/Footer.vue'))},
+  setup(props, context) {
+    const position = ref(0);
+    const onScroll = detail => {
+      position.value = detail.position;
+    }
+    return {
+      onScroll,
+      position
+    }
+  },
+})
+
 </script>

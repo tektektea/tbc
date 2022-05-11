@@ -1,11 +1,35 @@
 <template>
   <div class="row q-col-gutter-xs">
-    <div class="col-4" v-for="(event,n) in localState.events" :key="`xs-${n}`">
-      <div class="tcard">
-        <p class="text-bold text-md">{{event?.title}}</p>
-        <p class="text-grey-1">{{event?.description}}</p>
-        <q-btn color="primary" flat class="q-pa-sm">Read more</q-btn>
-      </div>
+    <div class="col-xs-12 col-sm-6" v-for="(event,n) in localState.events" :key="`xs-${n}`">
+      <q-card class="tcard" flat bordered>
+        <q-card-section horizontal>
+          <q-card-section class="q-pt-xs">
+            <div class="text-lg q-mt-sm q-mb-xs">Title</div>
+            <div class="text-caption text-grey">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+          </q-card-section>
+
+          <q-card-section class="col-5 flex flex-center">
+            <q-img
+              class="rounded-borders"
+              src="https://cdn.quasar.dev/img/parallax2.jpg"
+            />
+          </q-card-section>
+        </q-card-section>
+
+        <q-separator />
+
+        <q-card-actions>
+          <q-btn flat round icon="event" />
+          <q-btn flat>
+            7:30PM
+          </q-btn>
+          <q-btn flat color="primary">
+            Read More
+          </q-btn>
+        </q-card-actions>
+      </q-card>
     </div>
   </div>
 </template>

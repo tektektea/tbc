@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebResourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::group(['prefix' => 'web-resource','middleware' => 'auth:sanctum'], function () {
+    Route::get('term', [WebResourceController::class, 'getTerm']);
+    Route::get('privacy', [WebResourceController::class, 'getPrivacy']);
+    Route::put('{model}', [WebResourceController::class, 'update']);
 });
