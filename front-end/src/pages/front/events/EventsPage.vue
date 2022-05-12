@@ -3,6 +3,22 @@
     <div class="container">
       <h1 class="title">Our Events</h1>
       <div class="row q-col-gutter-xs">
+        <div class="col-xs-12 flex justify-end">
+          <q-input v-model="localState.search"
+                   style="width: 400px"
+                   outlined
+                   dense
+                   rounded
+                   @keyup="handleSearch"
+                   placeholder="Search">
+            <template #append>
+              <q-icon name="search" color="dark"/>
+            </template>
+          </q-input>
+        </div>
+        <div class="col-xs-12">
+          <q-separator class="q-my-md"/>
+        </div>
         <div class="col-xs-12" v-for="(event,n) in localState.events" :key="`xs-${n}`">
           <q-card class="tcard" flat bordered>
             <q-card-section horizontal>
@@ -55,8 +71,12 @@ export default {
         {id:6,title:"Event one",description:'lorem'},
       ]
     })
+    const handleSearch=e=>{
+
+    }
     return{
-      localState
+      localState,
+      handleSearch
     }
   }
 }

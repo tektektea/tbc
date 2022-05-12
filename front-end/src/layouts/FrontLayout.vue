@@ -9,7 +9,7 @@
           </q-avatar>
           TBC Car Rental
         </q-toolbar-title>
-        <q-btn :to="{name:'booking'}" color="primary" label="Booking" outline rounded/>
+        <q-btn class="text-bold" :to="{name:'booking'}" color="primary" label="Booking" outline rounded/>
       </q-toolbar>
     </q-header>
 

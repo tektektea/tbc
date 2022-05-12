@@ -31,7 +31,7 @@
         <q-item-label>Contact</q-item-label>
       </q-item-section>
     </q-item>
-    <q-item clickable :to="{name:'contact'}">
+    <q-item clickable :to="{name:'events'}">
       <q-item-section>
         <q-item-label>Events</q-item-label>
       </q-item-section>

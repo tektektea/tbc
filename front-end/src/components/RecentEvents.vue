@@ -25,7 +25,7 @@
           <q-btn flat>
             7:30PM
           </q-btn>
-          <q-btn flat color="primary">
+          <q-btn :to="{name:'event:detail',params:{id:event.id}}" flat color="primary">
             Read More
           </q-btn>
         </q-card-actions>

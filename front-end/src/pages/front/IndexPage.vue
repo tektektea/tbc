@@ -5,7 +5,7 @@
         <div class="typewriter">
           <p class="text-xl text-primary">{{header}}</p>
         </div>
-          <p class="text-md q-ma-md text-dark">{{featureText}}</p>
+          <q class="text-lg q-ma-md text-grey-6">{{featureText}}</q>
       </div>
       <div class="col-xs-12 col-sm-7 bg-white">
         <FavCars/>

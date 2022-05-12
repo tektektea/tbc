@@ -13,17 +13,17 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="q-pa-sm">
+    <q-page-container class="q-pa-sm bg-grey-1">
      <q-page>
        <div class="row q-col-gutter-sm container q-pa-md">
-         <div class="col-3">
+         <div class="col-3 bg-white rounded-borders">
            <q-list class="shadow-0 q-pa-xs">
              <q-item>
                <q-item-section>
                  <q-item-label>CONTENT MANAGEMENT</q-item-label>
                </q-item-section>
              </q-item>
-             <q-item clickable v-for="menu in localState.cmsMenus" :key="menu.id" class="q-pa-xs">
+             <q-item :to="{name:menu.route}" clickable v-for="menu in localState.cmsMenus" :key="menu.id" class="q-pa-xs">
                <q-item-section avatar class="q-pa-none q-ma-none">
                  <q-icon color="dark" :name="menu.icon"/>
                </q-item-section>
@@ -37,7 +37,7 @@
                  <q-item-label>ADMINISTRATION</q-item-label>
                </q-item-section>
              </q-item>
-             <q-item clickable v-for="menu in localState.adminMenus" :key="menu.id">
+             <q-item :to="{name:menu.route}" clickable v-for="menu in localState.adminMenus" :key="menu.id">
                <q-item-section avatar class="q-pa-none q-ma-none">
                  <q-icon color="dark" :name="menu.icon"/>
                </q-item-section>
@@ -48,7 +48,7 @@
            </q-list>
          </div>
          <div class="col-9">
-           <router-view class="tcard"/>
+           <router-view class="q-pa-md"/>
          </div>
        </div>
      </q-page>
@@ -73,9 +73,10 @@ export default defineComponent({
         {id:2,title:'Contact',route:'contact:detail',icon:'contact_page'},
       ],
       adminMenus:[
-        {id:1,title:'Users',route:'car:list',icon:'supervisor_account'},
-        {id:2,title:'Events',route:'car:list',icon:'event_available'},
-        {id:2,title:'Setting',route:'car:list',icon:'settings'},
+        {id:1,title:'Accounts',route:'account:list',icon:'supervisor_account'},
+        {id:2,title:'Our Events',route:'event:list',icon:'event_available'},
+        {id:3,title:'Media',route:'media:list',icon:'image'},
+        {id:4,title:'Contact Request',route:'contact-request:list',icon:'phone'},
       ]
 
     })

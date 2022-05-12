@@ -1,6 +1,6 @@
 <template>
   <div class="row q-col-gutter-xs flex justify-center items-center">
-    <div class="col-xs-6 col-sm-2" v-for="(event,n) in localState.events" :key="`xs-${n}`">
+    <div class="col-xs-12 col-sm-3" v-for="(event,n) in localState.events" :key="`xs-${n}`">
       <q-card class="tcard" flat bordered>
           <q-avatar style="margin-top: -90px;" size="72px">
             <q-img
@@ -8,9 +8,8 @@
               src="https://cdn.quasar.dev/img/parallax2.jpg"
             />
           </q-avatar>
-
-
-          <q-card-section class="col-5 flex flex-center">
+        <p class="text-grey-5"> Designation</p>
+          <q-card-section class=" flex flex-center">
             <q class="text-dark text-italic">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </q>
