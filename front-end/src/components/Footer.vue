@@ -11,6 +11,11 @@
         <q-item-label>Terms And Conditions</q-item-label>
       </q-item-section>
     </q-item>
+    <q-item clickable :to="{name:'login'}">
+      <q-item-section>
+        <q-item-label>Admin login</q-item-label>
+      </q-item-section>
+    </q-item>
   </div>
   <div class="column items-center justify-center">
     <q-img style="width: 90px" src="~assets/logo.svg" />
@@ -26,6 +31,14 @@
         <q-item-label>Contact</q-item-label>
       </q-item-section>
     </q-item>
+    <q-item clickable :to="{name:'contact'}">
+      <q-item-section>
+        <q-item-label>Events</q-item-label>
+      </q-item-section>
+    </q-item>
+  </div>
+  <div class="full-width flex justify-center items-center">
+    <q class="text-white">Design and developed with ❤ by Lalchhanchhuaha 😉😉</q>
   </div>
 </div>
 </template>

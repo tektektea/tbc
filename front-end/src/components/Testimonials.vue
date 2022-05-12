@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-col-gutter-xs">
+  <div class="row q-col-gutter-xs flex justify-center items-center">
     <div class="col-xs-6 col-sm-2" v-for="(event,n) in localState.events" :key="`xs-${n}`">
       <q-card class="tcard" flat bordered>
           <q-avatar style="margin-top: -90px;" size="72px">
@@ -11,11 +11,9 @@
 
 
           <q-card-section class="col-5 flex flex-center">
-            <blockquote>
-              <p>
+            <q class="text-dark text-italic">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </blockquote>
+            </q>
           </q-card-section>
 
 
@@ -33,9 +31,6 @@ export default {
         {id:1,title:"Event one",description:'lorem'},
         {id:2,title:"Event one",description:'lorem'},
         {id:3,title:"Event one",description:'lorem'},
-        {id:4,title:"Event one",description:'lorem'},
-        {id:5,title:"Event one",description:'lorem'},
-        {id:6,title:"Event one",description:'lorem'},
       ]
     })
     return{

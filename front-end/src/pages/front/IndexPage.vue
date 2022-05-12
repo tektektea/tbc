@@ -5,7 +5,7 @@
         <div class="typewriter">
           <p class="text-xl text-primary">{{header}}</p>
         </div>
-        <p class="text-md">{{featureText}}</p>
+          <p class="text-md q-ma-md text-dark">{{featureText}}</p>
       </div>
       <div class="col-xs-12 col-sm-7 bg-white">
         <FavCars/>
@@ -14,6 +14,7 @@
     <div class="column items-center justify-center full-width q-pa-md bg-grey-1">
         <h1 class="title">Our recent events</h1>
         <RecentEvents class="container"/>
+      <q-btn :to="{name:'events'}" class="q-ma-md" color="primary" flat label="Our Events"/>
     </div>
     <div class="column items-center justify-center full-width q-pa-xl bg-white">
         <h1 class="title">Testimonials</h1>

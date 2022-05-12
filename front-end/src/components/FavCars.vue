@@ -18,7 +18,7 @@
     >
       <q-carousel-slide
         v-for="(item,index) in localState.cars"
-        :name="index" class="column no-wrap flex-center">
+        :name="index" class="q-pa-none q-ma-none column no-wrap flex-center">
         <div class="full-width primary-card">
           <q-img :src="item.src" style="height: 200px"/>
           <p class="text-md text-dark">{{item?.title}}</p>
