@@ -1,0 +1,1 @@
+import{Q as e}from"./QPage.4637a194.js";import{_ as t,o as a,c as s,w as o,h as r}from"./index.67db5a7e.js";const c={},n=r("h1",{class:"title"},"Terms and conditions",-1);function _(i,d){return a(),s(e,null,{default:o(()=>[n]),_:1})}var m=t(c,[["render",_]]);export{m as default};

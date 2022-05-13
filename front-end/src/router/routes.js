@@ -41,6 +41,10 @@ const routes = [
       { path: 'testimonials/create', name:'testimonial:create',component: () => import('pages/backend/testimonial/CreateTestimonialPage.vue') },
       { path: 'testimonials/:id/edit', name:'testimonial:edit',component: () => import('pages/backend/testimonial/EditTestimonialPage.vue') },
 
+      { path: 'events', name:'event:list',component: () => import('pages/backend/event/EventsPage.vue') },
+      { path: 'events/create', name:'event:create',component: () => import('pages/backend/event/CreateEventPage.vue') },
+      { path: 'events/:id/edit', name:'event:edit',component: () => import('pages/backend/event/EditEventPage.vue') },
+
       { path: 'accounts', name:'account:list',component: () => import('pages/backend/account/AccountListPage.vue') },
       { path: 'contact-request', name:'contact-request:list',component: () => import('pages/backend/contact-request/ContactRequestsPage.vue') },
 

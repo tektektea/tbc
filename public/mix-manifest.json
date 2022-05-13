@@ -1,5 +1,6 @@
 {
     "/resources/views/app.blade.php": "/resources/views/app.blade.php",
     "/favicon.ico": "/favicon.ico",
+    "/favicon.jpeg": "/favicon.jpeg",
     "/index.html": "/index.html"
 }

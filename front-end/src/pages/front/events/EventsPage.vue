@@ -22,20 +22,24 @@
         <div class="col-xs-12" v-for="(event,n) in localState.listData.data" :key="`xs-${n}`">
           <q-card class="tcard" flat bordered>
             <q-card-section horizontal>
-              <q-card-section class="q-pt-xs">
-                <div class="text-lg text-dark q-mt-sm q-mb-xs">{{ event?.title }}</div>
-                <div class="text-caption text-grey">
-                  {{event?.description}}
-                </div>
-              </q-card-section>
-
               <q-card-section class="col-5 flex flex-center">
                 <q-img
                   style="width: 150px"
                   class="rounded-borders"
-                  :src="event?.image_path"
+                  :src="event?.thumbnail_path"
                 />
               </q-card-section>
+              <q-card-section class="q-pt-xs col-7">
+                <div class="full-width">
+                  <div class="text-lg text-dark q-mt-sm q-mb-xs">{{ event?.title }}</div>
+                  <div class="text-caption text-grey">
+                    {{event?.description}}
+                  </div>
+                </div>
+
+              </q-card-section>
+
+
             </q-card-section>
 
             <q-separator />
@@ -88,7 +92,7 @@ const handleSearch=e=>{
   }
 }
 const deleteData=item=>{
-  api.delete(`events/${item.id}`)
+  api.delete(`event/${item.id}`)
     .then(res=>{
       const {message} = res.data;
       q.notify({type:'positive',message})
@@ -106,7 +110,7 @@ const updatePaginatedData=list=>{
   localState.listData.per_page = per_page;
 }
 const fetch=(page)=>{
-  api.get(`events/index`,{params:page,search:localState.search})
+  api.get(`public/events`,{params:{page,search:localState.search}})
     .then(res=>{
       const {message,list} = res.data;
       updatePaginatedData(list)

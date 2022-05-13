@@ -41,7 +41,8 @@ class MediaThumbnailJob implements ShouldQueue
             $constraint->aspectRatio();
         });
 
-        $fileName='/thumbnails/'.Str::uuid().$this->media->original_name;
+
+        $fileName='thumbnails/'.Str::uuid().$this->media->original_name;
 
         Storage::disk('public')->put($fileName, $img->__toString());
         $this->media->update(['thumbnail' =>$fileName ]);

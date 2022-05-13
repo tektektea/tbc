@@ -1,24 +1,24 @@
 <template>
   <q-page>
-    <p class="title">Testimonials</p>
+    <p class="title">Events</p>
     <div class="full-width flex items-center bg-white q-pa-md q-ma-md">
-      <q-btn :to="{name:'testimonial:create'}" rounded label="New Testimony" outline color="primary"/>
-      <p class="text-dark q-ma-md">Create a new testimonial</p>
+      <q-btn :to="{name:'event:create'}" rounded label="New Event" outline color="primary"/>
+      <p class="text-dark q-ma-md">Create a new event</p>
     </div>
     <q-list separator class="bg-white full-width">
-      <q-item :to="{name:'testimonial:detail',params: {id:item.id}}" v-for="item in localState.listData.data" :key="item.id">
+      <q-item :to="{name:'event:edit',params: {id:item.id}}" v-for="item in localState.listData.data" :key="item.id">
 
         <q-item-section avatar>
-          <q-avatar>
-            <img style="width: 90px" :src="item?.image_url"/>
+          <q-avatar square>
+            <q-img style="width: 210px" :src="item?.thumbnail_path" no-native-menu/>
           </q-avatar>
         </q-item-section>
         <q-item-section>
-          <q-item-label>{{item?.name}}</q-item-label>
-          <q-item-label caption>{{item?.quote}}</q-item-label>
+          <q-item-label>{{item?.title}}</q-item-label>
+          <q-item-label caption>{{item?.description}}</q-item-label>
         </q-item-section>
         <q-item-section side>
-            <q-btn round @click="deleteData(item)" icon="delete" color="negative"/>
+            <q-btn round @click.self="deleteData(item)" icon="delete" color="negative"/>
         </q-item-section>
       </q-item>
       <div class="col-12">
@@ -49,7 +49,7 @@ const localState=reactive({
 })
 
 const deleteData=item=>{
-  api.delete(`testimony/${item.id}`)
+  api.delete(`event/${item.id}`)
     .then(res=>{
       const {message} = res.data;
       q.notify({type:'positive',message})
@@ -67,7 +67,7 @@ const updatePaginatedData=list=>{
   localState.listData.per_page = per_page;
 }
 const fetch=(page)=>{
-  api.get(`testimony/index`,{params: {page}})
+  api.get(`event/index`,{params: {page}})
     .then(res=>{
       const {message,list} = res.data;
       updatePaginatedData(list)

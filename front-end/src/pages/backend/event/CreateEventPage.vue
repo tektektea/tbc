@@ -1,45 +1,44 @@
 <template>
   <q-page>
-    <p class="title">New testimony</p>
+    <p class="title">New Event</p>
     <br/>
     <q-form @submit="submit" @reset="reset" class="column q-gutter-sm q-pa-md bg-white">
 
       <q-input
         class="q-mt-sm"
-        v-model="localState.formData.name"
+        v-model="localState.formData.title"
         outlined
         :rules="[
-          value => !!value || 'Name is required'
+          value => !!value || 'Title is required'
         ]"
-        label="Name"/>
+        label="Title"/>
 
       <q-input
         class="q-mt-sm"
-        v-model="localState.formData.designation"
+        v-model="localState.formData.description"
         outlined
         :rules="[
-          value => !!value || 'Designation is required'
+          value => !!value || 'Description is required'
         ]"
-        label="Designation"/>
+        label="Description"/>
 
       <q-input
         class="q-mt-sm"
-        type="textarea"
-        v-model="localState.formData.quote"
-        outlined
-        :rules="[
-          value => !!value || 'Quote is required'
-        ]"
-        label="Quote"/>
-
-      <q-input
-        class="q-mt-sm"
-        v-model="localState.formData.image_url"
+        v-model="localState.formData.thumbnail_path"
         outlined
         :rules="[
           value => !!value || 'Image url is required'
         ]"
-        label="Image Url"/>
+        label="Thumbnail Url"/>
+      <q-input
+        class="q-mt-sm"
+        type="textarea"
+        v-model="localState.formData.content"
+        outlined
+        :rules="[
+          value => !!value || 'Quote is required'
+        ]"
+        label="Content"/>
 
       <q-separator class="full-width q-my-sm"/>
       <div class="q-gutter-sm">
@@ -58,26 +57,26 @@ import {useQuasar} from "quasar";
 const q = useQuasar();
 const localState=reactive({
   formData:{
-    name:'',
-    designation:'',
-    quote:'',
-    image_url:''
+    title:'',
+    description:'',
+    content:'',
+    thumbnail_path:''
   }
 })
 
 const reset = () => {
   Object.assign(localState.formData,{
-    name:'',
-    designation:'',
-    quote:'',
-    image_url:''
+    title:'',
+    description:'',
+    content:'',
+    thumbnail_path:''
     }
   )
 
 }
 const submit = (e) => {
   q.loading.show();
-  api.post('testimony',localState.formData)
+  api.post('event',localState.formData)
     .then(res=>{
       const {message} = res.data;
       e.target.reset();

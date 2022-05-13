@@ -65,10 +65,11 @@ p{
   font-family: 'Raleway', sans-serif;
 }
 .primary-card{
-  background: $secondary linear-gradient(to right bottom, $secondary, $primary 120%) repeat scroll 0% 0%;
   border-radius: 10px;
-  padding: 16px;
+  background: rgba(0, 0, 0, 0) linear-gradient(to right bottom, rgb(0, 127, 255), rgb(0, 89, 178) 120%) repeat scroll 0% 0%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px, rgba(0, 0, 0, 0.04) 0px 10px 10px;
+
+  padding: 16px;
 }
 .tcard {
   border-radius: 10px;

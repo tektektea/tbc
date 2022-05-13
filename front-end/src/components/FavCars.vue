@@ -10,9 +10,7 @@
       navigation-icon="radio_button_unchecked"
       navigation
       padding
-      arrows
       autoplay
-      control-type="regular"
       control-color="primary"
       class="bg-transparent text-dark"
     >

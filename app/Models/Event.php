@@ -11,9 +11,10 @@ class Event extends Model
 
     protected $fillable = ['title', 'description', 'content', 'thumbnail_path'];
 
-    protected $appends = ['full_path', 'thumbnail_path'];
+    protected $appends = ['thumbnail_url'];
+    protected $hidden = ['content'];
 
-    public function getFullPathAttribute()
+    public function getThumbnailUrlAttribute()
     {
         return $url = url('/storage') . '/' . $this->thumbnail_path;
     }
