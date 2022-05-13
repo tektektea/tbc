@@ -36,16 +36,16 @@ class MediaThumbnailJob implements ShouldQueue
     public function handle()
     {
 
-        $path = Storage::path('public/'.$this->media->path);
-        $img = Image::make($path)->resize(300, 185, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+            $path = Storage::path('public/'.$this->media->path);
+            $img = Image::make($path)->resize(300, 185, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
+            $fileName='thumbnails/'.Str::uuid().$this->media->original_name;
 
-        $fileName='thumbnails/'.Str::uuid().$this->media->original_name;
+            Storage::disk('public')->put($fileName,  (string) $img->encode());
+            $this->media->update(['thumbnail' =>$fileName ]);
 
-        Storage::disk('public')->put($fileName, $img->__toString());
-        $this->media->update(['thumbnail' =>$fileName ]);
 
     }
 }
