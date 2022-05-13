@@ -5,7 +5,7 @@
       <q-toolbar class="container" style="height: 70px">
         <q-toolbar-title @click="$router.replace({name:'home'})" class="text-bold cursor-pointer">
           <q-avatar class="q-mr-lg">
-            <img src="~assets/quasar-logo-vertical.svg">
+            <img src="~assets/logo.jpeg">
           </q-avatar>
           TBC Car Rental
         </q-toolbar-title>
@@ -13,7 +13,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="q-pa-sm">
+    <q-page-container class="q-pa-sm bg-grey-1">
       <router-view/>
     </q-page-container>
     <q-footer>

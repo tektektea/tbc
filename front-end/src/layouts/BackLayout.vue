@@ -5,7 +5,7 @@
       <q-toolbar class="container" style="height: 70px">
         <q-toolbar-title @click="$router.replace({name:'home'})" class="text-bold cursor-pointer">
           <q-avatar class="q-mr-lg">
-            <img src="~assets/quasar-logo-vertical.svg">
+            <img src="~assets/logo.jpeg">
           </q-avatar>
           TBC Car Rental
         </q-toolbar-title>
@@ -60,17 +60,25 @@
 </template>
 <script>
 import {defineAsyncComponent, defineComponent, reactive, ref} from "vue";
+import {api} from "boot/axios";
+import {useQuasar} from "quasar";
+import {useAuthData} from "stores/authData";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   components: {Footer: defineAsyncComponent(() => import('components/Footer.vue'))},
   setup(props, context) {
+    const q = useQuasar();
+    const router = useRouter();
+    const {setLoginData} = useAuthData();
     const localState=reactive({
       cmsMenus:[
         {id:1,title:'Vehicles',route:'vehicle:list',icon:'car_rental'},
         {id:2,title:'Privacy policy',route:'privacy:detail',icon:'description'},
-        {id:2,title:'Terms and Conditions',route:'term:detail',icon:'thumb_up_alt'},
-        {id:2,title:'About',route:'about:detail',icon:'self_improvement'},
-        {id:2,title:'Contact',route:'contact:detail',icon:'contact_page'},
+        {id:3,title:'Terms and Conditions',route:'term:detail',icon:'thumb_up_alt'},
+        {id:4,title:'About',route:'about:detail',icon:'self_improvement'},
+        {id:5,title:'Contact',route:'contact:detail',icon:'contact_page'},
+        {id:6,title:'Testimonials',route:'testimonial:list',icon:'chat'},
       ],
       adminMenus:[
         {id:1,title:'Accounts',route:'account:list',icon:'supervisor_account'},
@@ -80,11 +88,19 @@ export default defineComponent({
       ]
 
     })
+    const  logout=()=>{
+      api.post('auth/logout')
+      .then(res=>{
+        setLoginData(null, null);
+        router.replace({name:'home'})
+      })
+      .catch(err=>{
+        setLoginData(null, null);
+      })
+    }
     return {
       localState,
-      logout:()=>{
-        console.log('logout')
-      }
+      logout,
     }
   },
 })

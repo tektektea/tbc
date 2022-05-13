@@ -23,8 +23,11 @@ export const useAuthData = defineStore('authData', {
       LocalStorage.remove('token');
       LocalStorage.remove('user');
     },
-    setTitle(){
-      this.title="Application of "
+    setLoginData(token,user){
+      this.user = user;
+      this.token = token;
+      LocalStorage.set('user', user);
+      LocalStorage.set('token', token);
     }
   }
 })

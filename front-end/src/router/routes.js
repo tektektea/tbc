@@ -37,9 +37,9 @@ const routes = [
       { path: 'privacy', name:'privacy:detail',component: () => import('pages/backend/privacy/PrivacyPage.vue') },
       { path: 'privacy/:id', name:'privacy:edit',component: () => import('pages/backend/privacy/EditPrivacyPage.vue') },
 
-      { path: 'vehicles', name:'vehicle:list',component: () => import('pages/backend/vehicle/VehiclesPage.vue') },
-      { path: 'vehicles/create', name:'vehicle:create',component: () => import('pages/backend/vehicle/CreateVehiclePage.vue') },
-      { path: 'vehicles/:id/edit', name:'vehicle:edit',component: () => import('pages/backend/vehicle/EditVehiclePage.vue') },
+      { path: 'testimonials', name:'testimonial:list',component: () => import('pages/backend/testimonial/TestimonialsPage.vue') },
+      { path: 'testimonials/create', name:'testimonial:create',component: () => import('pages/backend/testimonial/CreateTestimonialPage.vue') },
+      { path: 'testimonials/:id/edit', name:'testimonial:edit',component: () => import('pages/backend/testimonial/EditTestimonialPage.vue') },
 
       { path: 'accounts', name:'account:list',component: () => import('pages/backend/account/AccountListPage.vue') },
       { path: 'contact-request', name:'contact-request:list',component: () => import('pages/backend/contact-request/ContactRequestsPage.vue') },

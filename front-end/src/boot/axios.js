@@ -9,7 +9,7 @@ import {useAuthData} from "stores/authData";
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const BASE_URL ='https://filetracking.msegs.in/api';
+const BASE_URL ='https://tbccarrental.com/api';
 const LOCAL_BASE_URL = 'http://127.0.0.1:8000/api';
 const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 

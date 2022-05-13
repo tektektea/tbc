@@ -1,13 +1,13 @@
 <template>
   <q-page class="column items-center">
-    <div class="row full-width" style="min-height: 480px">
+    <div class="row full-width bg-white" style="min-height: 480px">
       <div class="col-xs-12 col-sm-5 column items-center justify-center">
         <div class="typewriter">
           <p class="text-xl text-primary">{{header}}</p>
         </div>
           <q class="text-lg q-ma-md text-grey-6">{{featureText}}</q>
       </div>
-      <div class="col-xs-12 col-sm-7 bg-white">
+      <div class="col-xs-12 col-sm-7 ">
         <FavCars/>
       </div>
     </div>

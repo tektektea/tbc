@@ -2,8 +2,8 @@
   <div class="bg-grey-1 flex items-center justify-center fullscreen">
     <div style="width: 650px" class="row shadow-5 rounded-borders bg-white">
       <div class="col-xs-12 col-sm-6 flex justify-center items-center">
-        <q-form class="text-center q-ma-md relative-position">
-          <q-img style="width: 70px" src="~assets/logo.svg"/>
+        <q-form @submit="submit" class="text-center q-ma-md relative-position">
+          <q-img style="width: 70px" src="~assets/logo.jpeg"/>
           <q-separator class="full-width q-my-md"/>
           <q-input outlined
                    type="email"
@@ -37,12 +37,35 @@
   </div>
 </template>
 <script setup>
-import {reactive} from "vue";
+import {onMounted, reactive} from "vue";
+import {api} from "boot/axios";
+import {useRouter} from "vue-router";
+import {useQuasar} from "quasar";
+import {useAuthData} from "stores/authData";
 
+const q = useQuasar();
+const router = useRouter();
+const {setLoginData,isAuthenticated} = useAuthData();
 const localState=reactive({
   formData:{
     email:'',
     password:''
+  }
+})
+const submit=e=>{
+  q.loading.show();
+  api.post('auth/login',localState.formData)
+  .then(res=>{
+    const {user, token} = res.data;
+    setLoginData(token, user);
+    router.push({name:'dashboard'})
+  })
+  .catch(err=>q.notify({type:'negative',message:err?.response?.data?.message ||  err.toString()}))
+  .finally(()=>q.loading.hide())
+}
+onMounted(()=>{
+  if (isAuthenticated) {
+    router.push({name: 'dashboard'});
   }
 })
 </script>

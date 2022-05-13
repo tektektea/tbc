@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -18,14 +17,13 @@ class AuthController extends Controller
         $this->validate($request, ['email' => 'required', 'password' => 'required']);
 
         $staff = User::query()->where('email', $request->get('email'))->first();
-        if (blank($staff)) {
+        if (blank($staff))
             return response()->json(['message' => "User not found"], 400);
-        }
+
 
         $found = Hash::check($request->get('password'), $staff->password);
-        if (!$found) {
+        if (!$found)
             return response()->json(['message' => "Invalid credential"], 400);
-        }
 
         \auth()->login($staff);
 
