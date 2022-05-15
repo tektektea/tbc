@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md full-height">
     <q-carousel
       v-model="slide"
       vertical
@@ -12,13 +12,13 @@
       padding
       autoplay
       control-color="primary"
-      class="bg-transparent text-dark"
+      class="bg-transparent  full-height"
     >
       <q-carousel-slide
-        v-for="(item,index) in fav_cars"
+        v-for="(item,index) in data"
         :name="index" class="q-pa-none q-ma-none column no-wrap flex-center">
         <div class="full-width primary-card">
-          <q-img :src="item.image_url" style="height: 200px"/>
+          <q-img :src="item.image_url" style="height: 350px"/>
           <p class="text-md text-dark">{{item?.name}}</p>
           <div v-html="item?.description"/>
         </div>
@@ -29,10 +29,11 @@
 </template>
 
 <script setup>
-import {reactive, ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
 import {useContentData} from "stores/contentData";
 
 const slide = ref(0);
 const {fav_cars} = useContentData();
 
+const data = computed(() => fav_cars);
 </script>

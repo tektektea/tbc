@@ -1,6 +1,6 @@
 <template>
   <div class="row q-col-gutter-xs">
-    <div class="col-xs-12 col-sm-6" v-for="(event,n) in recent_events" :key="`xs-${n}`">
+    <div class="col-xs-12 col-sm-6" v-for="(event,n) in data" :key="`xs-${n}`">
       <q-card class="tcard" flat bordered>
         <q-card-section horizontal>
           <q-card-section class="q-pt-xs">
@@ -34,12 +34,13 @@
   </div>
 </template>
 <script setup>
-import {reactive} from "vue";
+import {computed, reactive} from "vue";
 import {useContentData} from "stores/contentData";
 import useUtils from "src/utils/useUtils";
 
 const {formatDate} = useUtils();
 const {recent_events} = useContentData();
 
+const data = computed(() => recent_events);
 
 </script>
