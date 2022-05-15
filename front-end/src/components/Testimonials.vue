@@ -1,6 +1,6 @@
 <template>
   <div class="row full-width q-col-gutter-sm flex justify-center q-col-gutter-xs">
-    <div class="col-xs-12 col-sm-3 tcard q-ml-sm column items-center" v-for="(event,n) in data" :key="`xs-${n}`">
+    <div class="col-xs-12 col-sm-3 tcard q-ml-sm column items-center" v-for="(event,n) in testimonials" :key="`xs-${n}`">
           <q-avatar  size="72px">
             <q-img
               class="rounded-borders"
@@ -20,7 +20,7 @@
 <script setup>
 import {useContentData} from "stores/contentData";
 import {computed} from "vue";
+import {storeToRefs} from "pinia/dist/pinia";
 
-const {testimonials} = useContentData();
-const data = computed(() => testimonials);
+const {testimonials} = storeToRefs(useContentData());
 </script>

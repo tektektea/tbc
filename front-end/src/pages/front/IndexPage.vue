@@ -32,7 +32,7 @@
 
 <script>
 import {defineAsyncComponent, defineComponent} from 'vue'
-import {useQuasar} from "quasar";
+import {useMeta, useQuasar} from "quasar";
 import {useContentData} from "stores/contentData";
 
 export default defineComponent({
@@ -45,7 +45,19 @@ export default defineComponent({
   },
   setup(props, context) {
     const q = useQuasar();
+    const metaData = {
+      // sets document title
+      title: 'Index',
+      titleTemplate: title => `${title} -  Index`,
+
+      // meta tags
+      meta: {
+        description: { name: 'description', content: "I hahdam nan leh i himzawk nan govt approved car rental service TBC Car rental hi lo pan ve ngei ang che" },
+        keywords: { name: 'keywords', content: 'mizo car rental service,mizoram car rental service,mizo car,tbc car rental' },
+      }
+    }
     const {featureText,header} = useContentData();
+    useMeta(()=>metaData)
     return{
       featureText,
       header

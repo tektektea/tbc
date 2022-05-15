@@ -39,12 +39,13 @@
 <script setup>
 import {onMounted, reactive} from "vue";
 import {api} from "boot/axios";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {useQuasar} from "quasar";
 import {useAuthData} from "stores/authData";
 
 const q = useQuasar();
 const router = useRouter();
+const route = useRoute();
 const {setLoginData,isAuthenticated} = useAuthData();
 const localState=reactive({
   formData:{
@@ -53,12 +54,14 @@ const localState=reactive({
   }
 })
 const submit=e=>{
+  const {query} = route;
+
   q.loading.show();
   api.post('auth/login',localState.formData)
   .then(res=>{
     const {user, token} = res.data;
     setLoginData(token, user);
-    router.push({name:'dashboard'})
+    router.push(query?.redirect||'admin')
   })
   .catch(err=>q.notify({type:'negative',message:err?.response?.data?.message ||  err.toString()}))
   .finally(()=>q.loading.hide())

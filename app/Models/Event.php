@@ -12,7 +12,6 @@ class Event extends Model
     protected $fillable = ['title', 'description', 'content', 'thumbnail_path'];
 
     protected $appends = ['thumbnail_url'];
-    protected $hidden = ['content'];
 
     public function getThumbnailUrlAttribute()
     {

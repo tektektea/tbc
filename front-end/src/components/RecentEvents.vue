@@ -1,9 +1,10 @@
 <template>
   <div class="row q-col-gutter-xs">
-    <div class="col-xs-12 col-sm-6" v-for="(event,n) in data" :key="`xs-${n}`">
-      <q-card class="tcard" flat bordered>
+    <div class="col-xs-12 col-sm-6" v-for="(event,n) in recent_events" :key="`xs-${n}`">
+      <div class="tcard" flat bordered>
+
         <q-card-section horizontal>
-          <q-card-section class="q-pt-xs">
+          <q-card-section class="q-pt-xs col-7">
             <div class="text-lg text-dark q-mt-sm q-mb-xs">{{ event?.title }}</div>
             <div class="text-caption text-grey">
               {{ event?.description}}
@@ -29,7 +30,7 @@
             Read More
           </q-btn>
         </q-card-actions>
-      </q-card>
+      </div>
     </div>
   </div>
 </template>
@@ -37,10 +38,10 @@
 import {computed, reactive} from "vue";
 import {useContentData} from "stores/contentData";
 import useUtils from "src/utils/useUtils";
+import {storeToRefs} from "pinia/dist/pinia";
 
 const {formatDate} = useUtils();
-const {recent_events} = useContentData();
+const {recent_events} = storeToRefs(useContentData());
 
-const data = computed(() => recent_events);
 
 </script>

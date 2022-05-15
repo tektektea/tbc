@@ -3,8 +3,9 @@
 
     <q-header  class="header flex justify-center text-primary">
       <q-toolbar class="container" style="height: 70px">
+        <q-btn @click="open=!open" v-if="$q.screen.lt.sm" flat icon="menu" color="dark"/>
         <q-toolbar-title @click="$router.replace({name:'home'})" class="text-bold cursor-pointer">
-          <q-avatar class="q-mr-lg">
+          <q-avatar v-if="$q.screen.gt.xs" class="q-mr-lg">
             <img src="~assets/logo.jpeg">
           </q-avatar>
           TBC Car Rental
@@ -12,46 +13,19 @@
         <q-btn @click="logout" color="danger" label="Logout" flat rounded/>
       </q-toolbar>
     </q-header>
+    <q-drawer side="left" behavior="mobile"  v-model="open">
+      <AdminNav/>
+    </q-drawer>
 
     <q-page-container class="q-pa-sm bg-grey-1">
-     <q-page>
-       <div class="row q-col-gutter-sm container q-pa-md">
-         <div class="col-3 bg-white rounded-borders">
-           <q-list class="shadow-0 q-pa-xs">
-             <q-item>
-               <q-item-section>
-                 <q-item-label>CONTENT MANAGEMENT</q-item-label>
-               </q-item-section>
-             </q-item>
-             <q-item :to="{name:menu.route}" clickable v-for="menu in localState.cmsMenus" :key="menu.id" class="q-pa-xs">
-               <q-item-section avatar class="q-pa-none q-ma-none">
-                 <q-icon color="dark" :name="menu.icon"/>
-               </q-item-section>
-               <q-item-section>
-                 <q-item-label>{{menu?.title}}</q-item-label>
-               </q-item-section>
-             </q-item>
-             <q-separator class="q-my-md"/>
-             <q-item>
-               <q-item-section>
-                 <q-item-label>ADMINISTRATION</q-item-label>
-               </q-item-section>
-             </q-item>
-             <q-item :to="{name:menu.route}" clickable v-for="menu in localState.adminMenus" :key="menu.id">
-               <q-item-section avatar class="q-pa-none q-ma-none">
-                 <q-icon color="dark" :name="menu.icon"/>
-               </q-item-section>
-               <q-item-section>
-                 <q-item-label>{{menu?.title}}</q-item-label>
-               </q-item-section>
-             </q-item>
-           </q-list>
+       <q-page class="row q-col-gutter-sm container q-pa-sm">
+         <div class="col-sm-3 xs-hide bg-white rounded-borders">
+           <admin-nav/>
          </div>
-         <div class="col-9">
+         <div class="col-xs-12 col-sm-9">
            <router-view class="q-pa-md"/>
          </div>
-       </div>
-     </q-page>
+       </q-page>
     </q-page-container>
     <q-footer>
       <Footer/>
@@ -66,11 +40,12 @@ import {useAuthData} from "stores/authData";
 import {useRouter} from "vue-router";
 
 export default defineComponent({
-  components: {Footer: defineAsyncComponent(() => import('components/Footer.vue'))},
+  components: {AdminNav:defineAsyncComponent(() => import('components/AdminNav.vue')), Footer: defineAsyncComponent(() => import('components/Footer.vue'))},
   setup(props, context) {
     const q = useQuasar();
     const router = useRouter();
     const {setLoginData} = useAuthData();
+    const open = ref(false);
     const localState=reactive({
       cmsMenus:[
         {id:1,title:'Vehicles',route:'vehicle:list',icon:'car_rental'},
@@ -100,6 +75,7 @@ export default defineComponent({
       })
     }
     return {
+      open,
       localState,
       logout,
     }

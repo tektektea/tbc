@@ -2,7 +2,7 @@
   <q-page class="flex justify-center">
     <div class="container">
       <p class="text-lg text-dark">{{localState.data?.title || 'No title'}}</p>
-      <div class="q-my-md tcard">
+      <div class="q-my-md ">
         <div v-html="localState.data?.content"/>
       </div>
     </div>
@@ -21,7 +21,7 @@ const localState = reactive({
 })
 const fetch = (id) => {
   q.loading.show();
-  api.get(`events/${id}`)
+  api.get(`event/${id}`)
     .then(res => {
       const {data} = res.data;
       localState.data = data;

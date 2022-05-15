@@ -5,8 +5,8 @@
       <br/>
       <div class="q-col-gutter-md row items-start">
 
-        <div v-for="item in localState.listData.data" :key="item.id" class="col-6">
-          <q-img @click="openDetail(item)" :src="item.thumbnail_path" no-native-menu>
+        <div v-for="item in localState.listData.data" :key="item.id" class="col-sm-3 col-xs-6">
+          <q-img style="width: 60%" @click="openDetail(item)" :src="item.thumbnail_path" no-native-menu>
           </q-img>
         </div>
         <div class="col-12">
@@ -20,14 +20,14 @@
       </div>
     </div>
     <q-dialog v-model="localState.openDetail">
-      <div class="bg-white">
+      <q-card style="max-width: 80%;width: 80%;" class="bg-white">
         <q-card-section>
-          <q-img :style="'min-height:'+$q.screen.height*0.7+'px'"  :src="localState.selected?.full_path" ratio="1"/>
+          <q-img  :src="localState.selected?.full_path" ratio="1"/>
         </q-card-section>
         <q-card-actions>
           <q-btn label="Close" @click="localState.openDetail=false"/>
         </q-card-actions>
-      </div>
+      </q-card>
     </q-dialog>
 
   </q-page>

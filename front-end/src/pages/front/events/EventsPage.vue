@@ -22,22 +22,17 @@
         <div class="col-xs-12" v-for="(event,n) in localState.listData.data" :key="`xs-${n}`">
           <q-card class="tcard" flat bordered>
             <q-card-section horizontal>
-              <q-card-section class="col-5 flex flex-center">
                 <q-img
                   style="width: 150px"
-                  class="rounded-borders"
+                  class="rounded-borders q-mr-lg"
                   :src="event?.thumbnail_path"
                 />
-              </q-card-section>
-              <q-card-section class="q-pt-xs col-7">
-                <div class="full-width">
+                <div class="full-width q-ml-lg">
                   <div class="text-lg text-dark q-mt-sm q-mb-xs">{{ event?.title }}</div>
                   <div class="text-caption text-grey">
                     {{event?.description}}
                   </div>
                 </div>
-
-              </q-card-section>
 
 
             </q-card-section>
@@ -91,15 +86,7 @@ const handleSearch=e=>{
     fetch(1);
   }
 }
-const deleteData=item=>{
-  api.delete(`event/${item.id}`)
-    .then(res=>{
-      const {message} = res.data;
-      q.notify({type:'positive',message})
-      fetch(0)
-    })
-    .catch(err=>q.notify({type:'negative',message:err?.response?.data?.message || err.toString()}))
-}
+
 const updatePagination=(value)=>fetch(value)
 const  pageCount= computed(() => Math.ceil(localState.listData.total / localState.listData.per_page));
 const updatePaginatedData=list=>{

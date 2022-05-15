@@ -83,4 +83,10 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('events/{model}', [PublicController::class, 'event']);
     Route::get('testimonials', [PublicController::class, 'testimonials']);
     Route::post('contact-request', [ContactRequestController::class, 'store']);
+
+    Route::get('web-resource/contact', [WebResourceController::class, 'getContact']);
+    Route::get('web-resource/term', [WebResourceController::class, 'getTerm']);
+    Route::get('web-resource/privacy', [WebResourceController::class, 'getPrivacy']);
+    Route::get('web-resource/about', [WebResourceController::class, 'getAbout']);
+
 });

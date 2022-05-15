@@ -21,41 +21,44 @@ const routes = [
   {
     path: '/admin',
     component: () => import('layouts/BackLayout.vue'),
+    beforeEach: (to, from) => {
+      console.log("admin route ",to)
+    },
     children: [
-      { path: '', name:'dashboard',component: () => import('pages/backend/DashboardPage.vue') },
-      { path: 'media', name:'media:list',component: () => import('pages/backend/media/MediaListPage.vue') },
-      { path: 'media/upload', name:'media:upload',component: () => import('pages/backend/media/UploadPage.vue') },
+      { path: '', name:'dashboard',component: () => import('pages/backend/DashboardPage.vue') ,meta:{protected:true}},
+      { path: 'media', name:'media:list',component: () => import('pages/backend/media/MediaListPage.vue'),meta:{protected:true} },
+      { path: 'media/upload', name:'media:upload',component: () => import('pages/backend/media/UploadPage.vue'),meta:{protected:true} },
 
 
-      { path: 'vehicles', name:'vehicle:list',component: () => import('pages/backend/vehicle/VehiclesPage.vue') },
-      { path: 'vehicles/create', name:'vehicle:create',component: () => import('pages/backend/vehicle/CreateVehiclePage.vue') },
-      { path: 'vehicles/:id/edit', name:'vehicle:edit',component: () => import('pages/backend/vehicle/EditVehiclePage.vue') },
+      { path: 'vehicles', name:'vehicle:list',component: () => import('pages/backend/vehicle/VehiclesPage.vue'),meta:{protected:true} },
+      { path: 'vehicles/create', name:'vehicle:create',component: () => import('pages/backend/vehicle/CreateVehiclePage.vue') ,meta:{protected:true}},
+      { path: 'vehicles/:id/edit', name:'vehicle:edit',component: () => import('pages/backend/vehicle/EditVehiclePage.vue'),meta:{protected:true} },
 
 
-      { path: 'gallery', name:'gallery:list',component: () => import('pages/backend/gallery/GalleryPage.vue') },
+      { path: 'gallery', name:'gallery:list',component: () => import('pages/backend/gallery/GalleryPage.vue'),meta:{protected:true} },
 
-      { path: 'contact', name:'contact:detail',component: () => import('pages/backend/contact/ContactPage.vue') },
-      { path: 'contact/edit', name:'contact:edit',component: () => import('pages/backend/contact/EditContactPage.vue') },
+      { path: 'contact', name:'contact:detail',component: () => import('pages/backend/contact/ContactPage.vue') ,meta:{protected:true}},
+      { path: 'contact/edit', name:'contact:edit',component: () => import('pages/backend/contact/EditContactPage.vue'),meta:{protected:true} },
 
-      { path: 'about', name:'about:detail',component: () => import('pages/backend/about/AboutPage.vue') },
-      { path: 'about/edit', name:'about:edit',component: () => import('pages/backend/about/EditAboutPage.vue') },
+      { path: 'about', name:'about:detail',component: () => import('pages/backend/about/AboutPage.vue') ,meta:{protected:true}},
+      { path: 'about/edit', name:'about:edit',component: () => import('pages/backend/about/EditAboutPage.vue') ,meta:{protected:true}},
 
-      { path: 'term', name:'term:detail',component: () => import('pages/backend/term/TermPage.vue') },
-      { path: 'term/edit', name:'term:edit',component: () => import('pages/backend/term/EditTermPage.vue') },
+      { path: 'term', name:'term:detail',component: () => import('pages/backend/term/TermPage.vue'),meta:{protected:true} },
+      { path: 'term/edit', name:'term:edit',component: () => import('pages/backend/term/EditTermPage.vue'),meta:{protected:true} },
 
-      { path: 'privacy', name:'privacy:detail',component: () => import('pages/backend/privacy/PrivacyPage.vue') },
-      { path: 'privacy/edit', name:'privacy:edit',component: () => import('pages/backend/privacy/EditPrivacyPage.vue') },
+      { path: 'privacy', name:'privacy:detail',component: () => import('pages/backend/privacy/PrivacyPage.vue'),meta:{protected:true} },
+      { path: 'privacy/edit', name:'privacy:edit',component: () => import('pages/backend/privacy/EditPrivacyPage.vue'),meta:{protected:true} },
 
-      { path: 'testimonials', name:'testimonial:list',component: () => import('pages/backend/testimonial/TestimonialsPage.vue') },
-      { path: 'testimonials/create', name:'testimonial:create',component: () => import('pages/backend/testimonial/CreateTestimonialPage.vue') },
-      { path: 'testimonials/:id/edit', name:'testimonial:edit',component: () => import('pages/backend/testimonial/EditTestimonialPage.vue') },
+      { path: 'testimonials', name:'testimonial:list',component: () => import('pages/backend/testimonial/TestimonialsPage.vue'),meta:{protected:true} },
+      { path: 'testimonials/create', name:'testimonial:create',component: () => import('pages/backend/testimonial/CreateTestimonialPage.vue') ,meta:{protected:true}},
+      { path: 'testimonials/:id/edit', name:'testimonial:edit',component: () => import('pages/backend/testimonial/EditTestimonialPage.vue'),meta:{protected:true} },
 
-      { path: 'events', name:'event:list',component: () => import('pages/backend/event/EventsPage.vue') },
-      { path: 'events/create', name:'event:create',component: () => import('pages/backend/event/CreateEventPage.vue') },
-      { path: 'events/:id/edit', name:'event:edit',component: () => import('pages/backend/event/EditEventPage.vue') },
+      { path: 'events', name:'event:list',component: () => import('pages/backend/event/EventsPage.vue'),meta:{protected:true} },
+      { path: 'events/create', name:'event:create',component: () => import('pages/backend/event/CreateEventPage.vue'),meta:{protected:true} },
+      { path: 'events/:id/edit', name:'event:edit',component: () => import('pages/backend/event/EditEventPage.vue'),meta:{protected:true} },
 
-      { path: 'accounts', name:'account:list',component: () => import('pages/backend/account/AccountListPage.vue') },
-      { path: 'contact-request', name:'contact-request:list',component: () => import('pages/backend/contact-request/ContactRequestsPage.vue') },
+      { path: 'accounts', name:'account:list',component: () => import('pages/backend/account/AccountListPage.vue'),meta:{protected:true} },
+      { path: 'contact-request', name:'contact-request:list',component: () => import('pages/backend/contact-request/ContactRequestsPage.vue'),meta:{protected:true} },
     ]
   },
 

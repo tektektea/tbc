@@ -15,7 +15,7 @@
       class="bg-transparent  full-height"
     >
       <q-carousel-slide
-        v-for="(item,index) in data"
+        v-for="(item,index) in fav_cars"
         :name="index" class="q-pa-none q-ma-none column no-wrap flex-center">
         <div class="full-width primary-card">
           <q-img :src="item.image_url" style="height: 350px"/>
@@ -31,9 +31,9 @@
 <script setup>
 import {computed, reactive, ref} from 'vue'
 import {useContentData} from "stores/contentData";
+import {storeToRefs} from "pinia/dist/pinia";
 
 const slide = ref(0);
-const {fav_cars} = useContentData();
+const {fav_cars} = storeToRefs(useContentData());
 
-const data = computed(() => fav_cars);
 </script>

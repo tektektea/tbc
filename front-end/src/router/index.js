@@ -1,6 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+import {useAuthData} from "stores/authData";
 
 /*
  * If not building with SSR mode, you can
@@ -12,6 +13,8 @@ import routes from './routes'
  */
 
 export default route(function (/* { store, ssrContext } */) {
+  const {authenticated} = useAuthData();
+
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
@@ -26,5 +29,16 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
 
+  Router.beforeEach((to,from,next)=>{
+    console.log("meta",to.meta)
+    if (to.meta.protected) {
+      if (authenticated) {
+        next();
+      }else
+         next({name:'login',query:{redirect:to.fullPath}})
+    }
+    next();
+
+  })
   return Router
 })
