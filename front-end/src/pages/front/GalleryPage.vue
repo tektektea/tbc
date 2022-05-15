@@ -22,7 +22,7 @@
     <q-dialog v-model="localState.openDetail">
       <q-card style="max-width: 80%;width: 80%;" class="bg-white">
         <q-card-section>
-          <q-img  :src="localState.selected?.full_path" ratio="1"/>
+          <q-img  :src="localState.selected?.full_path"/>
         </q-card-section>
         <q-card-actions>
           <q-btn label="Close" @click="localState.openDetail=false"/>
