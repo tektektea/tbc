@@ -1,41 +1,24 @@
 <template>
-  <div class="row q-col-gutter-xs flex justify-center items-center">
-    <div class="col-xs-12 col-sm-3" v-for="(event,n) in localState.events" :key="`xs-${n}`">
-      <q-card class="tcard" flat bordered>
-          <q-avatar style="margin-top: -90px;" size="72px">
+  <div class="row full-width q-col-gutter-sm flex justify-center q-col-gutter-xs">
+    <div class="col-xs-12 col-sm-3 tcard q-ml-sm column items-center" v-for="(event,n) in testimonials" :key="`xs-${n}`">
+          <q-avatar  size="72px">
             <q-img
               class="rounded-borders"
-              src="https://cdn.quasar.dev/img/parallax2.jpg"
+              :src="event?.image_url"
             />
           </q-avatar>
-        <p class="text-grey-5"> Designation</p>
-          <q-card-section class=" flex flex-center">
+          <p class="text-dark text-bold"> {{ event?.name }}</p>
+          <p class="text-grey-5"> {{ event?.designation }}</p>
+
+
             <q class="text-dark text-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {{event?.quote}}
             </q>
-          </q-card-section>
-
-
-      </q-card>
     </div>
   </div>
 </template>
-<script>
-import {reactive} from "vue";
+<script setup>
+import {useContentData} from "stores/contentData";
 
-export default {
-  setup(){
-    const localState=reactive({
-      events:[
-        {id:1,title:"Event one",description:'lorem'},
-        {id:2,title:"Event one",description:'lorem'},
-        {id:3,title:"Event one",description:'lorem'},
-      ]
-    })
-    return{
-      localState
-    }
-  }
-}
-
+const {testimonials} = useContentData();
 </script>

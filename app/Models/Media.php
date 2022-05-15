@@ -9,7 +9,7 @@ class Media extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['original_name', 'mime', 'path','extension', 'thumbnail'];
+    protected $fillable = ['original_name', 'mime','gallery_image', 'path','extension', 'thumbnail'];
     protected $appends = ['full_path', 'thumbnail_path'];
 
     public function getFullPathAttribute()

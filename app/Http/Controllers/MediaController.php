@@ -19,10 +19,17 @@ class MediaController extends Controller
             'list' => Media::query()->paginate()
         ];
     }
+    public function gallery(Request $request)
+    {
+        return [
+            'list' => Media::query()->where('gallery_image',true)->paginate()
+        ];
+    }
     public function upload(Request $request)
     {
         $this->validate($request, [
-            'attachment' => 'image|max:5120'
+            'attachment' => 'image|max:5120',
+            'gallery_image'=>'required'
         ]);
         $file = $request->file('attachment');
         $path=Storage::disk('public')->put('media',$file);
@@ -30,7 +37,8 @@ class MediaController extends Controller
             'path'=>$path,
             'extension' => $file->getClientOriginalExtension(),
             'original_name' => $file->getClientOriginalName(),
-            'mime'=>$file->getMimeType()
+            'mime'=>$file->getMimeType(),
+            'gallery_image'=>(boolean)$request->get('gallery_image')
         ]);
         MediaThumbnailJob::dispatch($model);
         return [
@@ -42,6 +50,14 @@ class MediaController extends Controller
     {
         return [
             'list'=>Media::query()->get(),
+        ];
+    }
+
+    public function removeGallery(Request $request,Media $model)
+    {
+        return [
+            'data'=>$model->update(['gallery_image'=>false]),
+            'message'=>'Image removed from Gallery'
         ];
     }
 

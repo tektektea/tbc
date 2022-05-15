@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PublicController;
@@ -32,7 +33,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'web-resource','middleware' => 'auth:sanctum'], function () {
     Route::get('term', [WebResourceController::class, 'getTerm']);
     Route::get('privacy', [WebResourceController::class, 'getPrivacy']);
-    Route::put('{model}', [WebResourceController::class, 'update']);
+    Route::get('about', [WebResourceController::class, 'getAbout']);
+    Route::get('contact', [WebResourceController::class, 'getContact']);
+    Route::put('{type}', [WebResourceController::class, 'update']);
 });
 
 Route::group(['prefix' => 'vehicle','middleware' => 'auth:sanctum'], function () {
@@ -41,6 +44,11 @@ Route::group(['prefix' => 'vehicle','middleware' => 'auth:sanctum'], function ()
     Route::post('', [VehicleController::class, 'store']);
     Route::put('{model}', [VehicleController::class, 'update']);
     Route::delete('{model}', [VehicleController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'contact-request','middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [ContactRequestController::class, 'index']);
+    Route::delete('{model}', [ContactRequestController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'testimony','middleware' => 'auth:sanctum'], function () {
@@ -61,6 +69,8 @@ Route::group(['prefix' => 'event','middleware' => 'auth:sanctum'], function () {
 
 Route::group(['prefix' => 'media','middleware' => 'optimizeImages'], function () {
     Route::get('index', [MediaController::class, 'index']);
+    Route::get('gallery', [MediaController::class, 'gallery']);
+    Route::put('gallery/{model}', [MediaController::class, 'removeGallery']);
     Route::get('all', [MediaController::class, 'all']);
     Route::post('', [MediaController::class, 'upload']);
     Route::delete('{model}', [MediaController::class, 'destroy']);
@@ -72,4 +82,5 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('events', [PublicController::class, 'events']);
     Route::get('events/{model}', [PublicController::class, 'event']);
     Route::get('testimonials', [PublicController::class, 'testimonials']);
+    Route::post('contact-request', [ContactRequestController::class, 'store']);
 });

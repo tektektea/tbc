@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             WebResourceSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

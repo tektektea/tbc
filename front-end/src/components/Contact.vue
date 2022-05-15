@@ -4,7 +4,7 @@
       <MyMap/>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <q-form style="max-width: 380px" class="tcard q-pa-md q-ml-md">
+      <q-form @submit="submit" style="max-width: 380px" class="tcard q-pa-md q-ml-md">
         <q-input v-model="localState.formData.name"
                  outlined
                  label="Name"
@@ -14,37 +14,60 @@
         <q-input v-model="localState.formData.mobile"
                  outlined
                  label="Mobile"
+                 mask="##########"
                  :rules="[
                    value => !!value || 'Mobile is required'
+                 ]"/>
+        <q-input v-model="localState.formData.email"
+                 type="email"
+                 outlined
+                 label="Email"
+                 :rules="[
+                   value => !!value || 'Email is required'
                  ]"/>
         <q-input v-model="localState.formData.message"
                  type="textarea"
                  outlined
-                 label="Mobile"
+                 label="Message"
                  :rules="[
-                   value => !!value || 'Content is required'
+                   value => !!value || 'Message is required'
                  ]"/>
-        <q-btn style="min-width: 120px" color="primary" rounded label="Submit"/>
+        <q-btn type="submit" style="min-width: 120px" color="primary" rounded label="Submit"/>
       </q-form>
     </div>
   </div>
 </template>
-<script>
+<script setup>
 import {reactive} from "vue";
 import MyMap from "components/MyMap.vue";
-export default {
-  components: {MyMap},
-  setup(props){
-    const localState=reactive({
-      formData:{
+import {api} from "boot/axios";
+import {useQuasar} from "quasar";
+
+const q = useQuasar();
+const localState=reactive({
+  formData:{
+    name:'',
+    mobile:'',
+    email:'',
+    message:''
+  }
+})
+const submit = (e) => {
+  q.loading.show();
+  api.post('public/contact-request',localState.formData)
+    .then(res=>{
+      const {message} = res.data;
+      q.notify({type:'positive',message})
+      Object.assign(localState.formData,{
         name:'',
         mobile:'',
+        email:'',
         message:''
-      }
+      })
+      e?.target?.reset();
+
     })
-    return{
-      localState
-    }
-  }
+    .catch(err=>q.notify({type:'negative',message:err?.response?.data?.message || err.toString()}))
+    .finally(()=>q.loading.hide())
 }
 </script>

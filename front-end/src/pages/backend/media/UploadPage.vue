@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <h1 class="title">Upload Image</h1>
-    <q-card flat class="bg-white q-pa-md">
+    <q-form @submit="upload" flat class="bg-white q-pa-md">
       <q-file accept="image/*" max-file-size="4048576" filled bottom-slots v-model="model" label="Upload Image">
         <template v-slot:before>
           <q-icon name="image" />
@@ -10,12 +10,14 @@
         <template v-slot:hint>
           4md is Maximum size of image
         </template>
-
-        <template v-slot:append>
-          <q-btn label="Upload" color="primary"  icon="send" @click="upload" />
-        </template>
       </q-file>
-    </q-card>
+      <q-checkbox v-model="gallery_image"
+                  label="Do you want to display in gallery?"
+      />
+      <br/>
+      <q-btn class="q-mt-md" type="submit" label="Upload" color="primary"  icon="send" />
+
+    </q-form>
   </q-page>
 </template>
 <script setup>
@@ -26,9 +28,11 @@ import {useQuasar} from "quasar";
 
 const q = useQuasar();
 const model=ref(null)
+const gallery_image=ref(false)
 const upload=()=>{
   q.loading.show();
   let data = new FormData();
+  data.append('gallery_image',gallery_image.value)
   data.append('attachment', model.value);
   api.post(`media`,data)
   .then(res=>{

@@ -41,16 +41,19 @@ class WebResourceController extends Controller
             'data'=>$web
         ];
     }
-    public function update(Request $request,WebResource $model)
+    public function update(Request $request,string $type)
     {
+        $model=WebResource::query()->where('type', $type)->first();
+
         $this->validate($request, [
-            'content', 'required'
+            'content'=>'required'
         ]);
         $model->update([
             'content' => $request->get('content')
         ]);
         return [
-            'data'=>$model
+            'data'=>$model,
+            'message'=>'Content updated successfully'
         ];
     }
 

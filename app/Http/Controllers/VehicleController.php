@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -32,20 +33,27 @@ class VehicleController extends Controller
     {
         $validatedData=$this->validate($request, [
             'name' => 'required',
+            'description' => 'required',
+            'decorated' => 'required',
+            'image_url' => 'required',
             'km_rate' => 'required|numeric',
             'duty_rate' => 'required|numeric',
         ]);
-        $model=Vehicle::query()->create($request->merge($validatedData));
+        $model=Vehicle::query()->create($validatedData);
         return [
             'data' => $model,
             'message'=>'Vehicle created successfully'
         ];
     }
 
-    public function update(Request $request,Vehicle $model)
+    public function update(Request $request,string $type)
     {
+        $model=Model::query()->where('type', $type)->first();
+
         $validatedData=$this->validate($request, [
             'name' => 'required',
+            'description' => 'required',
+            'image_url' => 'required',
             'km_rate' => 'required|numeric',
             'duty_rate' => 'required|numeric',
         ]);

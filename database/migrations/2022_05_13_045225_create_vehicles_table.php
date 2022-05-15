@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('km_rate');
             $table->decimal('duty_rate');
             $table->text('description');
+            $table->string('image_url');
+            $table->boolean('decorated')->default(false);
             $table->timestamps();
         });
     }

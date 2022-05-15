@@ -37,7 +37,7 @@ class MediaThumbnailJob implements ShouldQueue
     {
 
             $path = Storage::path('public/'.$this->media->path);
-            $img = Image::make($path)->resize(300, 185, function ($constraint) {
+            $img = Image::make($path)->resize(200, 85, function ($constraint) {
                 $constraint->aspectRatio();
             });
 

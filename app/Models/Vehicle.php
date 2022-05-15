@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     use HasFactory;
-    protected $fillable=['km_rate','duty_rate','description','name'];
+    protected $fillable=['km_rate','duty_rate','description','name','image_url','decorated'];
 
 }

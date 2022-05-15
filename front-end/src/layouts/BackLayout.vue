@@ -75,6 +75,7 @@ export default defineComponent({
       cmsMenus:[
         {id:1,title:'Vehicles',route:'vehicle:list',icon:'car_rental'},
         {id:2,title:'Privacy policy',route:'privacy:detail',icon:'description'},
+        {id:2,title:'Gallery',route:'gallery:list',icon:'image'},
         {id:3,title:'Terms and Conditions',route:'term:detail',icon:'thumb_up_alt'},
         {id:4,title:'About',route:'about:detail',icon:'self_improvement'},
         {id:5,title:'Contact',route:'contact:detail',icon:'contact_page'},

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('media', function (Blueprint $table) {
             $table->id();
             $table->string('original_name');
+            $table->boolean('gallery_image')->default(false);
             $table->string('extension');
             $table->string('mime');
             $table->mediumText('path');

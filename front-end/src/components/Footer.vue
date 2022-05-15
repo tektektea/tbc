@@ -36,6 +36,11 @@
         <q-item-label>Events</q-item-label>
       </q-item-section>
     </q-item>
+    <q-item clickable :to="{name:'gallery'}">
+      <q-item-section>
+        <q-item-label>Gallery</q-item-label>
+      </q-item-section>
+    </q-item>
   </div>
   <div class="full-width flex justify-center items-center">
     <q class="text-dark">Design and developed with ❤ by Lalchhanchhuaha 😉😉</q>

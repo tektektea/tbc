@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Setting;
 use App\Models\Testimony;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -36,9 +38,13 @@ class PublicController extends Controller
 
     public function getPublicData(Request $request)
     {
+        $settingData = Setting::query()->first();
         return [
+            'header_text' => json_decode($settingData->content, true)['header_text'],
+            'feature_text' => json_decode($settingData->content, true)['feature_text'],
             'recent_events' => Event::query()->latest()->take(6)->get(),
             'testimonials' => Testimony::query()->get(),
+            'fav_cars' => Vehicle::query()->where('decorated', 1)->get(),
         ];
     }
 }

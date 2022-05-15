@@ -1,8 +1,8 @@
 {
   "name": "carrental",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Car rental db",
+  "description": "Mizoram Car rental Service rinawm leh changtlung ber Govt approved Car rental service kan ni e",
+  "productName": "TBC Car Rental",
   "author": "thangtea thangzaliana <thangtea.18.dec@gmail.com>",
   "private": true,
   "dependencies": {
