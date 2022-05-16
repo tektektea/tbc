@@ -30,7 +30,7 @@ class MediaController extends Controller
     public function upload(Request $request)
     {
         $this->validate($request, [
-            'attachment' => 'image',
+            'attachment' => 'required|mimes:jpeg,png|max:5000',
             'gallery_image' => 'required'
         ]);
         $file = $request->file('attachment');
