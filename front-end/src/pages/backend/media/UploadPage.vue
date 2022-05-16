@@ -34,7 +34,7 @@ const upload=()=>{
   let data = new FormData();
   const config = {
     headers: {
-      'content-type': 'multipart/form-data'
+      'enctype': 'multipart/form-data'
     }
   }
   data.append('gallery_image',gallery_image.value)

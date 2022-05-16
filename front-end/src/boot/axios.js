@@ -11,7 +11,7 @@ import {useAuthData} from "stores/authData";
 // for each client)
 const BASE_URL ='https://tbccarrental.com/api';
 const LOCAL_BASE_URL = 'http://127.0.0.1:8000/api';
-const api = axios.create({ baseURL: process.env.DEV?BASE_URL:BASE_URL})
+const api = axios.create({ baseURL: process.env.DEV?LOCAL_BASE_URL:BASE_URL})
 
 export default boot(({ app,router,store }) => {
 
