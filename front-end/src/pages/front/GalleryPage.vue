@@ -28,6 +28,7 @@
           <q-btn label="Close" @click="localState.openDetail=false"/>
         </q-card-actions>
       </q-card>
+
     </q-dialog>
 
   </q-page>

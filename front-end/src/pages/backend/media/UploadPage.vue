@@ -32,9 +32,14 @@ const gallery_image=ref(false)
 const upload=()=>{
   q.loading.show();
   let data = new FormData();
+  const config = {
+    headers: {
+      'content-type': 'multipart/form-data'
+    }
+  }
   data.append('gallery_image',gallery_image.value)
   data.append('attachment', model.value);
-  api.post(`media`,data)
+  api.post(`media`,data,config)
   .then(res=>{
     const {message} = res.data;
     q.notify({type:'positive',message})

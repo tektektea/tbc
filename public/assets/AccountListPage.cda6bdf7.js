@@ -1,0 +1,1 @@
+import{Q as e}from"./QPage.ac60cf0c.js";import{_ as t,o as c,c as a,w as s,h as o}from"./index.7b70c0b8.js";const r={},n=o("h1",{class:"title"},"Accounts",-1);function _(f,i){return c(),a(e,null,{default:s(()=>[n]),_:1})}var d=t(r,[["render",_]]);export{d as default};
