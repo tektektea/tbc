@@ -78,6 +78,8 @@ Route::group(['prefix' => 'media','middleware' => 'optimizeImages'], function ()
 
 Route::group(['prefix' => 'public'], function () {
     Route::get('data', [PublicController::class, 'getPublicData']);
+    Route::get('cta', [PublicController::class, 'cta']);
+    Route::get('faq', [PublicController::class, 'faq']);
     Route::get('recent-events', [PublicController::class, 'recentEvents']);
     Route::get('events', [PublicController::class, 'events']);
     Route::get('events/{model}', [PublicController::class, 'event']);

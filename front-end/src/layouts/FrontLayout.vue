@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff" @scroll="onScroll">
 
-    <q-header  class="header flex justify-center text-primary">
+    <q-header :class="position===0? 'bg-white flex justify-center text-primary':'header flex justify-center text-primary'">
       <q-toolbar class="container" style="height: 70px">
         <q-toolbar-title @click="$router.replace({name:'home'})" class="text-bold cursor-pointer">
           <q-avatar class="q-mr-lg">
@@ -9,6 +9,10 @@
           </q-avatar>
           TBC Car Rental
         </q-toolbar-title>
+        <q-btn class="xs-hide" :to="{name:'events'}"  flat color="dark" label="Events"/>
+        <q-btn class="xs-hide" :to="{name:'gallery'}"  flat color="dark" label="Gallery"/>
+        <q-btn class="xs-hide" :to="{name:'about'}"  flat color="dark" label="About us"/>
+        <q-btn class="xs-hide" :to="{name:'contact'}"  flat color="dark" label="Contact us"/>
         <q-btn class="text-bold" :to="{name:'booking'}" color="primary" label="Booking" outline rounded/>
       </q-toolbar>
     </q-header>

@@ -11,7 +11,7 @@ import { GoogleMap, Marker } from "vue3-google-map";
 export default defineComponent({
   components: { GoogleMap, Marker },
   setup() {
-    const center = { lat: 40.689247, lng: -74.044502 };
+    const center = { lat:23.739222194099643, lng: 92.71682968828705 };
 
     return { center };
   },

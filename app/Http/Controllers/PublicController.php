@@ -47,4 +47,25 @@ class PublicController extends Controller
             'fav_cars' => Vehicle::query()->where('decorated', 1)->get(),
         ];
     }
+
+    public function cta(Request $request)
+    {
+        return [
+            'list'=>[
+                ['head'=>'I dam em? ','caption'=>'Sawrkar approved ngei mai kan ni e','icon'=>'military_tech'],
+                ['head'=>'I dam em? ','caption'=>'Sawrkar approved ngei mai kan ni e','icon'=>'military_tech'],
+                ['head'=>'I dam em? ','caption'=>'Sawrkar approved ngei mai kan ni e','icon'=>'military_tech'],
+                ['head'=>'I dam em? ','caption'=>'Sawrkar approved ngei mai kan ni e','icon'=>'military_tech'],
+            ]
+        ];
+    }
+    public function faq(Request $request)
+    {
+        return [
+            'list'=>[
+                ['question'=>'I dam em? ','answer'=>'Dam e'],
+                ['question'=>'I dam em? ','answer'=>'Dam e'],
+            ]
+        ];
+    }
 }

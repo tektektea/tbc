@@ -8,24 +8,39 @@
           <q class="text-lg q-ma-md text-grey-6">{{featureText}}</q>
       </div>
       <div class="col-xs-12 col-sm-7 ">
-        <FavCars/>
+        <FavCars class="q-ma-sm"/>
       </div>
     </div>
+
+    <div class="column items-center  full-width q-py-xl bg-grey-1">
+      <h1 class="title">Why choose us</h1>
+      <Cta class="container"/>
+    </div>
+
     <div class="column items-center justify-center full-width q-pa-md bg-grey-1">
         <h1 class="title">Our recent events</h1>
         <RecentEvents class="container"/>
       <q-btn :to="{name:'events'}" class="q-ma-md" color="primary" flat label="Our Events"/>
     </div>
+
     <div class="column items-center justify-center full-width q-pa-xl bg-white">
-        <h1 class="title">Testimonials</h1>
+      <h1 class="title">Testimonials</h1>
       <br/>
-        <Testimonials/>
+      <Testimonials/>
     </div>
+
+    <div class="column items-center  full-width q-py-xl bg-grey-1">
+      <h1 class="title">Frequently Asked Questions</h1>
+      <Faq class="container"/>
+    </div>
+
+
 
     <div class="column items-center justify-center full-width q-py-xl bg-grey-1">
       <h1 class="title">Contact Us</h1>
       <Contact class="full-width"/>
     </div>
+
 
   </q-page>
 </template>
@@ -38,6 +53,8 @@ import {useContentData} from "stores/contentData";
 export default defineComponent({
   name: 'IndexPage',
   components: {
+    Cta:defineAsyncComponent(() => import('components/Cta.vue')),
+    Faq:defineAsyncComponent(() => import('components/Faq.vue')),
     RecentEvents:  defineAsyncComponent(() => import('components/RecentEvents.vue')),
     FavCars:  defineAsyncComponent(() => import('components/FavCars.vue')),
     Testimonials:  defineAsyncComponent(() => import('components/Testimonials.vue')),
@@ -47,8 +64,8 @@ export default defineComponent({
     const q = useQuasar();
     const metaData = {
       // sets document title
-      title: 'Index',
-      titleTemplate: title => `${title} -  Index`,
+      title: 'Home',
+      titleTemplate: title => `${title} -  Welcome TBC Car Rental`,
 
       // meta tags
       meta: {

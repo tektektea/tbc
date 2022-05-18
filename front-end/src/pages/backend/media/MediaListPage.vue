@@ -8,10 +8,11 @@
       <p class="text-dark q-ma-md">Click here to upload image</p>
     </div>
     <div v-for="item in localState.listData.data" :key="item.id" class="col-6">
-      <q-img :src="item.full_path" no-native-menu>
+      <q-img :src="item.thumbnail_path" no-native-menu>
         <q-btn @click="deleteImage(item)" round icon="delete" class="absolute all-pointer-events" flat style="top: 8px; left: 8px"/>
       </q-img>
-      <p>{{item?.thumbnail_path}}</p>
+      <q-btn @click="copy(item?.thumbnail)" icon="content_copy" label="Copy thumbnail"/>
+      <q-btn  @click="copy(item?.full_path)" icon="content_copy" label="Copy original"/>
     </div>
     <div class="col-12">
       <q-pagination
@@ -57,6 +58,10 @@ const updatePaginatedData=list=>{
   localState.listData.data = data;
   localState.listData.total = total;
   localState.listData.per_page = per_page;
+}
+const copy=(text)=>{
+  navigator?.clipboard.writeText(text);
+  q.notify({type:'positive',message:'Image path copied'})
 }
 const fetch=(page)=>{
   api.get(`media/index`,{params:page})
