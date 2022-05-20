@@ -1,5 +1,5 @@
 <template>
-<div class="flex justify-evenly bg-white text-dark q-pa-xl">
+<div class="flex justify-between bg-white text-dark q-pa-xl">
   <div class="column">
     <q-item clickable :to="{name:'privacy'}">
       <q-item-section>

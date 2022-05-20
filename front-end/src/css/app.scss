@@ -84,17 +84,19 @@ p{
   margin-right: auto;
   margin-left: auto;
 }
+
+
 @media (min-width: 480px) {
   .container{
-    width: 450px;
+    max-width: 480px;
   }
   .tcard{
-    padding: 2px;
+    padding: 8px;
   }
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    max-width: 750px;
   }
   .tcard{
     padding: 16px;
@@ -102,7 +104,7 @@ p{
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    max-width: 970px;
   }
   .tcard{
     padding: 24px;
@@ -110,7 +112,7 @@ p{
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    max-width: 1170px;
   }
   .tcard{
     padding: 24px;

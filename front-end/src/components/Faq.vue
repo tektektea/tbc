@@ -1,6 +1,6 @@
 <template>
   <div class="q-my-md">
-    <q-list separator class="tcard full-width">
+    <q-list separator class="tcard q-mx-md">
       <q-expansion-item v-for="(item,i) in questions"
                         :key="i"
                         :label="item?.question"

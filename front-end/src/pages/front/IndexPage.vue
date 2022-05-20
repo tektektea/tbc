@@ -31,7 +31,7 @@
 
     <div class=" column items-center justify-center  full-width q-py-xl bg-grey-1">
       <h1 class="title">Frequently Asked Questions</h1>
-      <Faq class="container"/>
+      <Faq :class="$q.screen.lt.sm?['full-width']:['container']"/>
     </div>
 
 
