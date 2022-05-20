@@ -1,0 +1,1 @@
+import{Q as e}from"./QPage.4a85597f.js";import{_ as t,o as a,c,w as s,h as o}from"./index.301fe4b6.js";const r={},_=o("h1",{class:"title"},"Edit vehicle ",-1);function i(l,n){return a(),c(e,null,{default:s(()=>[_]),_:1})}var h=t(r,[["render",i]]);export{h as default};

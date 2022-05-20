@@ -29,7 +29,7 @@
       <Testimonials/>
     </div>
 
-    <div class="column items-center  full-width q-py-xl bg-grey-1">
+    <div class=" column items-center justify-center  full-width q-py-xl bg-grey-1">
       <h1 class="title">Frequently Asked Questions</h1>
       <Faq class="container"/>
     </div>
