@@ -11,7 +11,7 @@
       <q-img :src="item.thumbnail_path" no-native-menu>
         <q-btn @click="deleteImage(item)" round icon="delete" class="absolute all-pointer-events" flat style="top: 8px; left: 8px"/>
       </q-img>
-      <q-btn @click="copy(item?.thumbnail)" icon="content_copy" label="Copy thumbnail"/>
+      <q-btn @click="copy(item?.thumbnail_path)" icon="content_copy" label="Copy thumbnail"/>
       <q-btn  @click="copy(item?.full_path)" icon="content_copy" label="Copy original"/>
     </div>
     <div class="col-12">

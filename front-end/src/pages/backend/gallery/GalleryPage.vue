@@ -12,7 +12,8 @@
         <q-img :src="item.full_path" no-native-menu>
           <q-btn color="negative" @click="deleteImage(item)" round icon="close" class="absolute all-pointer-events" flat style="top: 8px; left: 8px"/>
         </q-img>
-        <p>{{item?.thumbnail_path}}</p>
+        <q-btn @click="copy(item?.thumbnail_path)" icon="content_copy" label="Copy thumbnail"/>
+        <q-btn  @click="copy(item?.full_path)" icon="content_copy" label="Copy original"/>
       </div>
       <div class="col-12">
         <q-pagination
@@ -41,6 +42,10 @@ const localState=reactive({
   }
 })
 
+const copy=(text)=>{
+  navigator?.clipboard.writeText(text);
+  q.notify({type:'positive',message:'Image path copied'})
+}
 const deleteImage=item=>{
   api.put(`media/gallery/${item.id}`)
     .then(res=>{

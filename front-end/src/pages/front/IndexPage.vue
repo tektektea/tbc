@@ -19,19 +19,19 @@
 
     <div class="column items-center justify-center full-width q-pa-md bg-grey-1">
         <h1 class="title">Our recent events</h1>
-        <RecentEvents class="container"/>
-      <q-btn :to="{name:'events'}" class="q-ma-md" color="primary" flat label="Our Events"/>
+        <RecentEvents class="full-width container"/>
+        <q-btn :to="{name:'events'}" class="q-ma-md" color="primary" flat label="Our Events"/>
     </div>
 
     <div class="column items-center justify-center full-width q-pa-xl bg-white">
       <h1 class="title">Testimonials</h1>
       <br/>
-      <Testimonials/>
+      <Testimonials class="full-width"/>
     </div>
 
-    <div class=" column items-center justify-center  full-width q-py-xl bg-grey-1">
+    <div class="column items-center justify-center  full-width q-py-xl bg-grey-1">
       <h1 class="title">Frequently Asked Questions</h1>
-      <Faq :class="$q.screen.lt.sm?['full-width']:['container']"/>
+      <Faq class="full-width container"/>
     </div>
 
 
