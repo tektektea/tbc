@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="container">
+    <div class="container q-mx-auto">
       <p class="title">Gallery</p>
       <br/>
       <div class="q-col-gutter-md row items-start">

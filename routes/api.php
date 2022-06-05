@@ -61,7 +61,6 @@ Route::group(['prefix' => 'testimony','middleware' => 'auth:sanctum'], function 
 
 Route::group(['prefix' => 'event','middleware' => 'auth:sanctum'], function () {
     Route::get('index', [EventController::class, 'index']);
-    Route::get('{model}', [EventController::class, 'show']);
     Route::post('', [EventController::class, 'store']);
     Route::put('{model}', [EventController::class, 'update']);
     Route::delete('{model}', [EventController::class, 'destroy']);
@@ -92,3 +91,4 @@ Route::group(['prefix' => 'public'], function () {
     Route::get('web-resource/about', [WebResourceController::class, 'getAbout']);
 
 });
+Route::get('event/{model}', [EventController::class, 'show']);

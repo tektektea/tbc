@@ -1,6 +1,6 @@
 <template>
   <q-page class="column items-center">
-    <div class="row full-width bg-white" style="min-height: 600px">
+    <div class="row full-width bg-white" style="min-height: 750px">
       <div class="col-xs-12 col-sm-5 column items-center justify-center">
         <div class="typewriter">
           <p class="text-xl text-primary">{{header}}</p>
@@ -36,7 +36,7 @@
 
 
 
-    <div class="column items-center justify-center full-width q-py-xl bg-grey-1">
+    <div class="column  items-center justify-center full-width q-py-xl bg-grey-1">
       <h1 class="title">Contact Us</h1>
       <Contact class="full-width"/>
     </div>

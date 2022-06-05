@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex justify-center">
-    <div class="container">
+  <q-page>
+    <div class="container q-mx-auto">
       <p class="text-lg text-dark">{{localState.data?.title || 'No title'}}</p>
       <div class="q-my-md ">
         <div v-html="localState.data?.content"/>

@@ -2,6 +2,7 @@
   <div class="q-pa-md full-height">
     <q-carousel
       v-model="slide"
+      height="750px"
       vertical
       transition-prev="slide-down"
       transition-next="slide-up"

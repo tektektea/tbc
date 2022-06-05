@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="container">
+    <div class="container q-mx-auto">
       <h1 class="title">Our Events</h1>
       <div class="row q-col-gutter-xs">
         <div class="col-xs-12 flex justify-end">

@@ -20,7 +20,7 @@
     <q-page-container class="q-pa-sm bg-grey-1">
       <router-view/>
     </q-page-container>
-    <q-footer class="bg-white">
+    <q-footer class="bg-white flex items-center justify-center">
       <Footer class="container"/>
     </q-footer>
   </q-layout>

@@ -1,6 +1,6 @@
 /<template>
   <q-page>
-    <div class="container bg-white">
+    <div class="container  q-mx-auto bg-white">
       <div v-html="localStore.content"/>
 
     </div>
